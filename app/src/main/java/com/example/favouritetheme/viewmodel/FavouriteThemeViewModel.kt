@@ -23,7 +23,8 @@ class FavouriteThemeViewModel @Inject constructor() : ViewModel() {
     private val _usersWhoVotedForTheFavouriteTheme = MutableLiveData<List<String>>()
 
     fun onFavouriteThemeUpdated(): LiveData<String> = _favouriteTheme
-    fun usersWhoVotedForTheFavouriteTheme(): LiveData<List<String>> = _usersWhoVotedForTheFavouriteTheme
+    fun usersWhoVotedForTheFavouriteTheme(): LiveData<List<String>> =
+        _usersWhoVotedForTheFavouriteTheme
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun getThemes(context: Context) {
@@ -51,7 +52,7 @@ class FavouriteThemeViewModel @Inject constructor() : ViewModel() {
                     })
 
                 val favouriteColorEntry = valueMap.maxByOrNull { it.value.size }
-                withContext(Dispatchers.Main){
+                withContext(Dispatchers.Main) {
                     _favouriteTheme.postValue(favouriteColorEntry?.key)
                 }
 

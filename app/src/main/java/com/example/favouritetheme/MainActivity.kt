@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.usersWhoVotedForTheFavouriteTheme().observe(this) {
             it?.let { it1 ->
-                users.addAll(it1)
+                users.addAll(it1.sorted())
             }
             adapter.notifyDataSetChanged()
         }
